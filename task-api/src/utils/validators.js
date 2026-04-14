@@ -1,6 +1,11 @@
 const VALID_STATUSES = ['todo', 'in_progress', 'done'];
 const VALID_PRIORITIES = ['low', 'medium', 'high'];
 
+/**
+ * Validate the body of a task creation request.
+ * @param {Object} body - The request body.
+ * @returns {string|null} Error message or null if valid.
+ */
 const validateCreateTask = (body) => {
   if (!body.title || typeof body.title !== 'string' || body.title.trim() === '') {
     return 'title is required and must be a non-empty string';
@@ -17,6 +22,11 @@ const validateCreateTask = (body) => {
   return null;
 };
 
+/**
+ * Validate the body of a task update request.
+ * @param {Object} body - The request body.
+ * @returns {string|null} Error message or null if valid.
+ */
 const validateUpdateTask = (body) => {
   if (body.title !== undefined && (typeof body.title !== 'string' || body.title.trim() === '')) {
     return 'title must be a non-empty string';
@@ -33,6 +43,11 @@ const validateUpdateTask = (body) => {
   return null;
 };
 
+/**
+ * Validate the body of a task assignment request.
+ * @param {Object} body - The request body.
+ * @returns {string|null} Error message or null if valid.
+ */
 const validateAssignTask = (body) => {
   if (!body.assignee || typeof body.assignee !== 'string' || body.assignee.trim() === '') {
     return 'assignee is required and must be a non-empty string';
